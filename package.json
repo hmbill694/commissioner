@@ -1,0 +1,26 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@clerk/backend": "^1.14.1",
+    "@nuxt/icon": "^1.5.6",
+    "@nuxtjs/tailwindcss": "^6.12.2",
+    "drizzle-orm": "^0.29.5",
+    "nuxt": "^3.13.2",
+    "postgres": "^3.4.4",
+    "vue": "latest",
+    "vue-clerk": "^0.6.19",
+    "vue-router": "latest"
+  },
+  "devDependencies": {
+    "daisyui": "^4.12.13"
+  }
+}

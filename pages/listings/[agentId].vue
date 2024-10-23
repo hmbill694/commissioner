@@ -1,0 +1,3 @@
+<template>
+    Agent listings
+</template>
