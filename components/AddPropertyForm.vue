@@ -1,17 +1,11 @@
 <script setup lang="ts">
-const { enhance } = await useFormAction({
-})
+import PageTitle from './PageTitle.vue';
+
+const { enhance } = await useFormAction({})
 </script>
 
 <template>
-  <div class="flex items-center">
-    <NuxtLink to="/" class="btn btn-ghost">
-      <Icon name="heroicons:chevron-left-solid" size="1.2rem"/>
-    </NuxtLink>
-    <h1 class="text-3xl font-bold">
-      Add Property
-    </h1>
-  </div>
+  <PageTitle title="Add Property"/>
   <form method="POST" v-enhance="enhance" action="add-property" class="p-6 shadow-md rounded">
     <div class="form-control mb-4">
       <label class="label">
