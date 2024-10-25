@@ -1,12 +1,7 @@
 <template>
   <div class="flex-1 flex-col">
   <div class="flex items-center">
-    <NuxtLink to="/" class="btn btn-ghost">
-      <Icon name="heroicons:chevron-left-solid" size="1.2rem"/>
-    </NuxtLink>
-    <h1 class="text-3xl font-bold">
-      Property Details
-    </h1>
+    <BackButton title="Property Details"/>
   </div>
     <div class="card bg-base-100 shadow-xl p-4 ">
       <div class="card-body h-full">
@@ -38,6 +33,7 @@
   
   <script setup lang="ts">
   import { ref } from 'vue'
+import BackButton from '~/components/BackButton.vue';
   
   // Mock property data
   const property = ref({
