@@ -10,45 +10,13 @@ definePageMeta({
 
 const searchValue = ref("")
 
-const properties = ref<Property[]>([
-    {
-        id: '12415212r1',
-        address: "1234 West Main Street, Phoenix, AZ, 85003",
-        name: "Your Dream Home",
-        createdAt: new Date(),
-        updatedAt: null,
-        userId: 'user123',
-        askingPrice: "345,600",
-        commissionRate: "3.0%",
-        description: "A quaint little 3 bed with loads of character. Greate location, great schools!"
-    },
-    {
-        id: '12415212r1',
-        address: "1234 West Main Street, Phoenix, AZ, 85003",
-        name: "Your Dream Home",
-        createdAt: new Date(),
-        updatedAt: null,
-        userId: 'user123',
-        askingPrice: "345,600",
-        commissionRate: "3.0%",
-        description: "A quaint little 3 bed with loads of character. Greate location, great schools!"
-    },
-    {
-        id: '12415212r1',
-        address: "1234 West Main Street, Phoenix, AZ, 85003",
-        name: "Your Dream Home",
-        createdAt: new Date(),
-        updatedAt: null,
-        userId: 'user123',
-        askingPrice: "345,600",
-        commissionRate: "3.0%",
-        description: "A quaint little 3 bed with loads of character. Greate location, great schools!"
-    },
-]);
+const { result } = await useLoader("index") 
+
 
 const filteredProperties = computed(() => {
     const lowercaseSearch = searchValue.value.toLocaleLowerCase()
-    return properties.value.filter(property =>
+    const { properties } = result.value ?? { properties: [] }
+    return properties.filter(property =>
         property.name?.toLowerCase().includes(lowercaseSearch) || property.address.toLocaleLowerCase().includes(lowercaseSearch)
     )
 })
@@ -62,7 +30,7 @@ const filteredProperties = computed(() => {
                 Properties represented by you:
             </h1>
             <div class="flex gap-2">
-                <SearchBar class="flex-1" @search-update="(value) => {
+                <SearchBar class="flex-1" @search-update="(value: string) => {
                     searchValue = value
                 }" />
                 <NuxtLink class="btn btn-success" to="/add-property">

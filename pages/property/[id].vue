@@ -1,4 +1,5 @@
 <template>
+  <div class="flex-1 flex-col">
   <div class="flex items-center">
     <NuxtLink to="/" class="btn btn-ghost">
       <Icon name="heroicons:chevron-left-solid" size="1.2rem"/>
@@ -7,8 +8,8 @@
       Property Details
     </h1>
   </div>
-    <div class="card bg-base-100 shadow-xl p-4">
-      <div class="card-body">
+    <div class="card bg-base-100 shadow-xl p-4 ">
+      <div class="card-body h-full">
         <h2 class="card-title text-2xl font-bold">{{ property.name }}</h2>
         <p class="mb-2">
           <strong>Address:</strong> {{ property.address }}
@@ -32,6 +33,7 @@
         </div>
       </div>
     </div>
+  </div>
   </template>
   
   <script setup lang="ts">
