@@ -21,14 +21,7 @@ function saveToClipboard() {
 <template>
     <PropertyOverview 
     :properties="result.properties" 
-    representedBy="You"
-    :viewerIsRepresenting="true" 
+    :agentId="result?.userId ?? 'not-found' "
     >
-                <button class="btn btn-info" @click="saveToClipboard">
-                    Link to my listings
-                </button>
-                <NuxtLink class="btn btn-success" to="/add-property">
-                    Add Property
-                </NuxtLink>
     </PropertyOverview>
 </template>

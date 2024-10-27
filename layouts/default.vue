@@ -9,6 +9,7 @@
             <UserButton />
         </nav>
         <main class="card p-6 flex-1 bg-base-100 m-6">
+            <NuxtLoadingIndicator />
             <slot></slot>
         </main>
     </div>

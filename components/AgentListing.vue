@@ -1,27 +1,33 @@
 <script setup lang="ts">
 import type { Property } from '~/server/db/schema';
 
-const props = defineProps<{ properties: Property[], agentName: string }>()
+const props = defineProps<{ properties: Property[], agentName: string, userId: string }>()
 
 const { filterString, filteredProperties } = usePropertyFilter({ properties: props.properties })
+
+function saveToClipboard() {
+    console.log(`${window.location.href}listings/${props.userId}`)
+    navigator.clipboard.writeText(`${window.location.href}listings/${props.userId}`).then(() => {
+        console.log("Saved to clipboard")
+    })
+}
+
 </script>
 
 
 <template>
     <div class="p-6 flex flex-col flex-1">
-        <div class="justify-between flex flex-col lg:flex-row mb-2">
-            <h1 class="text-3xl font-bold mb-6">
-                Listings represented by {{ props.agentName }}:
-            </h1>
-            <div class="flex gap-2">
-                <SearchBar class="flex-1" @search-update="(value: string) => {
-                    filterString = value
-                }" />
-                <slot />
-            </div>
-        </div>
+        <TitleWithSearch 
+        :with-back="true"
+        :page-title="`Listings represented by ${props.agentName}`" 
+        @search-update="(value) => {
+            filterString = value
+        }" 
+        >
+            <button @click="saveToClipboard" class="btn btn-ghost">Copy link to listings</button>
+        </TitleWithSearch>
         <div class="overflow-y-scroll" v-if="filteredProperties.length > 0">
-            <AgentListingPropertyTable :properties="props.properties"/>
+            <AgentListingPropertyTable :properties="props.properties" />
         </div>
         <div v-else class="flex-1 flex justify-center items-center">
             <NothingToSeeHere message="No listings found." />

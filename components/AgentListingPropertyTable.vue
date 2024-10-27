@@ -8,7 +8,7 @@
     <tbody>
       <tr v-for="property in properties" :key="property.id">
         <td v-for="header in headers" :key="header">
-          {{ property[header] }}
+          {{ formatTableData(header, property) }}
         </td>
       </tr>
     </tbody>
@@ -22,6 +22,19 @@ import type { Property } from '~/server/db/schema';
 const props = defineProps<{ properties: Property[] }>()
 
 const headers = ref<(keyof Property)[]>(['name', 'address', 'askingPrice', 'commissionRate']);
+
+
+function formatTableData(column: keyof Property, property: Property) {
+  if (column === "askingPrice") {
+    return `$${Number.parseFloat(property[column]).toLocaleString()}`
+  }
+
+  if (column === "commissionRate") {
+    return `${Number.parseFloat(property[column]).toLocaleString()}`
+  }
+
+  return property[column]
+}
 
 function camelCaseToWords(s: string) {
   const result = s.replace(/([A-Z])/g, ' $1');

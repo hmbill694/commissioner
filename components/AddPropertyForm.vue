@@ -11,14 +11,14 @@ const { enhance } = await useFormAction({})
       <label class="label">
         <span class="label-text">Property Name</span>
       </label>
-      <input type="text" class="input input-bordered" required name="name" placeholder="Your dream home"/>
+      <input type="text" class="input input-bordered" required name="name"/>
     </div>
 
     <div class="form-control mb-4">
       <label class="label">
         <span class="label-text">Address</span>
       </label>
-      <input type="text" class="input input-bordered" required name="address" placeholder="1234 W. Main St. Anytown, USA, 99999"/>
+      <input type="text" class="input input-bordered" required name="address"/>
     </div>
 
     <div class="form-control mb-4">
@@ -32,7 +32,7 @@ const { enhance } = await useFormAction({})
     <div class="form-control mb-4">
       <p class="label-text mb-2">Commission Rate</p>
       <label class="input input-bordered flex justify-between items-center gap-3">
-        <input type="number" class="flex-1" required name="commissionRate"/>
+        <input class="flex-1" type="number" required name="commissionRate"/>
         <span>%</span>
       </label>
     </div>
@@ -41,7 +41,7 @@ const { enhance } = await useFormAction({})
       <label class="label">
         <span class="label-text">Description</span>
       </label>
-      <textarea class="textarea textarea-bordered" rows="3" required name="description" placeholder="A wonderful home that's move in ready."></textarea>
+      <textarea class="textarea textarea-bordered" rows="3" required name="description" ></textarea>
     </div>
 
     <button type="submit" class="btn btn-primary w-full">Submit</button>

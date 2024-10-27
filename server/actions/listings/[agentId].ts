@@ -14,8 +14,6 @@ export const loader = defineServerLoader(async (event) => {
 
     const authClient = clerkClient(event)
 
-    const requester = getAuth(event)
-
     const userDetails = await authClient.users.getUser(agentId.toString())
 
     const propertiesForAgent = await Result.fromAsync(() => db.select().from(propertyTable).where(eq(propertyTable.userId, agentId.toString())))
@@ -24,8 +22,6 @@ export const loader = defineServerLoader(async (event) => {
         throw new Error("Could not find properties for agent.")
     }
 
-    const viewerIsAgent = requester.userId === userDetails.id
-    const agentName = viewerIsAgent ? "You" : userDetails.fullName
 
-    return { properties: propertiesForAgent.getOrThrow(), agentName, viewerIsAgent }
+    return { properties: propertiesForAgent.getOrThrow(), agentName: userDetails.fullName }
 })
