@@ -28,5 +28,8 @@
     "@types/uuid": "^10.0.0",
     "daisyui": "^4.12.13",
     "drizzle-kit": "0.21.1"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.24.0"
   }
 }
