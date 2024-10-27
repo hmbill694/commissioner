@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Property } from "~/server/db/schema";
-const props = defineProps<{ property: Property, editable: boolean }>()
+const props = defineProps<{ property: Property }>()
 
 
 function truncateDescription(description: string) {
@@ -17,7 +17,7 @@ function truncateDescription(description: string) {
         <h2 class="text-xl font-bold mb-4">
           {{ props.property.name ?? "Your future home" }}
         </h2>
-        <form method="post" action="index?delete" v-if="props.editable">
+        <form method="post" action="index?delete">
           <input hidden name="id" :value="property.id"/>
           <button class="btn btn-rounded btn-ghost">
             <Icon name="heroicons:trash-solid" size="1.3rem" />
@@ -52,7 +52,7 @@ function truncateDescription(description: string) {
       </p>
       <div class="card-actions justify-end mt-4">
         <NuxtLink :to="`/property/${props.property.id}`" class="btn btn-primary">View Property</NuxtLink>
-        <form action="index?markSold" method="post" v-if="props.editable">
+        <form action="index?markSold" method="post">
           <input hidden name="id" :value="props.property.id"/>
           <button class="btn btn-success">Mark as Sold!</button>
         </form>

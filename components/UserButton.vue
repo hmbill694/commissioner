@@ -3,7 +3,7 @@ import { SignInButton, SignedIn, SignedOut, UserButton } from "vue-clerk";
 </script>
 
 <template>
-    <div>
+    <div class="btn btn-ghost">
         <SignedIn>
             <UserButton />
         </SignedIn>
