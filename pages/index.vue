@@ -7,21 +7,17 @@ definePageMeta({
     },
 });
 
-const { result } = await useLoader("index") 
+const { result, error } = await useLoader("index")
 
-
-function saveToClipboard() {
-    console.log(`${window.location.href}listings/${result.value?.userId}`)
-    navigator.clipboard.writeText(`${window.location.href}listings/${result.value?.userId}`).then(() => {
-        console.log("Saved to clipboard")
-    })
+if (error.value) {
+  throw createError({ statusMessage: error.value.statusMessage})
 }
+
 </script>
 
 <template>
     <PropertyOverview 
-    :properties="result.properties" 
+    :properties="result?.properties ?? []" 
     :agentId="result?.userId ?? 'not-found' "
-    >
-    </PropertyOverview>
+    />
 </template>

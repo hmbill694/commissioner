@@ -9,7 +9,10 @@ export const loader = defineServerLoader(async (event) => {
     const { agentId } = getQuery(event)
 
     if (!agentId) {
-        throw new Error("No agent provided.")
+        throw createError({
+            statusCode: 400,
+            statusMessage: 'No agent ID provided.'
+        })
     }
 
     const authClient = clerkClient(event)
@@ -19,7 +22,10 @@ export const loader = defineServerLoader(async (event) => {
     const propertiesForAgent = await Result.fromAsync(() => db.select().from(propertyTable).where(eq(propertyTable.userId, agentId.toString())))
 
     if (propertiesForAgent.isError()) {
-        throw new Error("Could not find properties for agent.")
+        throw createError({
+            statusCode: 400,
+            statusMessage: 'Could not find properties for agent.'
+        })
     }
 
 

@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import type { NuxtError } from "#app";
+import type { NuxtError } from '#app';
 
 const props = defineProps({
     error: Object as () => NuxtError,
 });
 
-const handleError = () => clearError({ redirect: "/" });
 </script>
 
 <template>
-    <div>
-        <h2>{{ error?.statusCode }}</h2>
-        <button @click="handleError">Clear errors</button>
+    <NuxtLayout name="default">
+    <div class="flex flex-col justify-center items-center flex-1">
+        <ErrorDisplay :message="props.error?.message ?? 'Unknown Error occurred' " />
     </div>
+    </NuxtLayout>
 </template>

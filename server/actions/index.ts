@@ -79,14 +79,20 @@ export const loader = defineServerLoader(async (event) => {
     const { userId } = getAuth(event)
 
     if (userId === null) {
-        throw new Error("Unable to get requesting user ID")
+        throw createError({
+            statusCode: 401,
+            message: "Could not get user id for requester."
+        })
     }
 
     const properties = await Result.fromAsync(() => db.select().from(propertyTable).where(eq(propertyTable.userId, userId)))
 
     if (properties.isError()) {
-        throw new Error("Was unable to get your properties at this time.")
+        throw createError({
+            statusCode: 500,
+            message: "Was unable to get your properties at this time."
+        })
     }
 
-    return { invalid: false, properties: properties.getOrThrow(), userId}
+    return { properties: properties.getOrThrow(), userId}
 })

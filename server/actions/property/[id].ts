@@ -7,19 +7,19 @@ export const loader = defineServerLoader(async (event) => {
     const { id } = getQuery(event)
 
     if (!id) {
-        throw new Error("No property ID provided.")
+        throw createError({
+            statusCode: 400,
+            statusMessage: 'No property ID provided.'
+          })
     }
-
-    db.query.propertyTable.findFirst({
-        with: {
-            id
-        }
-    })
 
     const properties = await Result.fromAsync(() => db.select().from(propertyTable).where(eq(propertyTable.id, id.toString())))
 
     if (properties.isError()) {
-        throw new Error("Could not find properties for agent.")
+        throw createError({
+            statusCode: 404,
+            statusMessage: 'Could not find property details.'
+          })
     }
 
     return { property: properties.getOrThrow().at(0) }

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const router = useRouter()
-
-
+const props = defineProps<{ title: string }>()
 </script>
 
 
@@ -9,6 +7,7 @@ const router = useRouter()
   <NuxtLink @click="$router.back()" class="btn btn-ghost">
     <Icon name="heroicons:chevron-left-solid" size="1.2rem"/>
   </NuxtLink>
+  <h2>{{ props.title  }}</h2>
 </template>
 
 <style scoped></style>
