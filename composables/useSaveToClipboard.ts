@@ -1,6 +1,12 @@
-function saveToClipboard() {
-    console.log(`${window.location.href}listings/${result.value?.userId}`)
-    navigator.clipboard.writeText(`${window.location.href}listings/${result.value?.userId}`).then(() => {
-        console.log("Saved to clipboard")
-    })
+import { toast } from "vue3-toastify"
+
+export default function saveToClipboard() {
+    return {
+        saveString: (stringToSave: string) => {
+            navigator.clipboard.writeText(stringToSave)
+                .then(() => {
+                    toast.info("Successfully saved to Clipboard!")
+                })
+        }
+    }
 }

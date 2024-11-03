@@ -9,11 +9,12 @@ if (error.value || !result.value) {
 
 const { filterString, filteredProperties } = usePropertyFilter({ properties: result.value.properties })
 
+const { saveString } = useSaveToClipboard()
+
 function saveToClipboard() {
-    navigator.clipboard.writeText(`${window.location.href}listings/${result.value.userId}`).then(() => {
-        console.log("Saved to clipboard")
-    })
+    saveString(`${window.location.href}listings/${result.value.userId}`)
 }
+
 
 </script>
 
