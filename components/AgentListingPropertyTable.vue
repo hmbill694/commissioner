@@ -3,12 +3,18 @@
     <thead>
       <tr>
         <th v-for="header in headers" :key="header">{{ camelCaseToWords(header) }}</th>
+        <th>Go To</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="property in properties" :key="property.id">
         <td v-for="header in headers" :key="header">
           {{ formatTableData(header, property) }}
+        </td>
+        <td>
+          <NuxtLink class="btn btn-ghost btn-circle" :to="`/property/${property.id}`">
+            <Icon name="heroicons:arrow-right-start-on-rectangle" size="1rem"/>
+          </NuxtLink>
         </td>
       </tr>
     </tbody>
@@ -19,7 +25,7 @@
 import { ref } from 'vue';
 import type { Property } from '~/server/db/schema';
 
-const props = defineProps<{ properties: Property[] }>()
+defineProps<{ properties: Property[] }>()
 
 const headers = ref<(keyof Property)[]>(['name', 'address', 'askingPrice', 'commissionRate']);
 
