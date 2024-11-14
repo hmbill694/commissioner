@@ -5,7 +5,7 @@ const { title } = defineProps<{ title: string }>()
 
 <template>
   <div class="flex items-center">
-    <NuxtLink to="/" class="btn btn-ghost">
+    <NuxtLink to="/dashboard" class="btn btn-ghost">
       <Icon name="heroicons:chevron-left-solid" size="1.2rem"/>
     </NuxtLink>
     <h1 class="text-3xl font-bold">

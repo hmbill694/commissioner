@@ -1,6 +1,6 @@
 import { getAuth } from "vue-clerk/server"
 import { db } from "../db"
-import { Property, propertyTable } from "../db/schema"
+import { propertyTable } from "../db/schema"
 import { eq } from "drizzle-orm"
 import { Result } from "~/utils/result"
 
@@ -36,7 +36,7 @@ export default defineFormActions({
         return actionResponse(
             event,
             { invalid: false },
-            { redirect: "/" }
+            { redirect: "/dashboard" }
         )
     },
     markSold: async (event) => {
@@ -70,7 +70,7 @@ export default defineFormActions({
         return actionResponse(
             event,
             { invalid: false },
-            { redirect: "/" }
+            { redirect: "/dashboard" }
         )
     }
 })

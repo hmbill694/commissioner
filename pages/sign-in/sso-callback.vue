@@ -3,7 +3,5 @@ import { AuthenticateWithRedirectCallback } from "vue-clerk";
 </script>
 
 <template>
-    <AuthenticateWithRedirectCallback />
+    <AuthenticateWithRedirectCallback/>
 </template>
-
-<style scoped></style>

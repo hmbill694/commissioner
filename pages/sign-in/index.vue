@@ -1,4 +1,6 @@
 <script setup lang="ts">
+definePageMeta({ middleware: 'guest', auth: { authenticatedRedirectUrl: '/dashboard' } })
+
 </script>
 
 <template>

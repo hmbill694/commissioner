@@ -3,7 +3,7 @@
 <template>
     <div class="min-h-screen flex flex-col bg-base-300">
         <nav class="navbar bg-base-100 justify-between">
-            <NuxtLink to="/" class="btn btn-ghost text-2xl"
+            <NuxtLink to="/dashboard" class="btn btn-ghost text-2xl"
                 >Commissioner</NuxtLink
             >
             <UserButton />

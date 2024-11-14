@@ -67,7 +67,7 @@ export default defineFormActions({
         return actionResponse(
             event,
             { invalid: false, property: insertResult.getOrThrow().at(0) },
-            { redirect: "/" }
+            { redirect: "/dashboard" }
         )
     }
 })

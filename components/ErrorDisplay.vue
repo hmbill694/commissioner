@@ -5,7 +5,7 @@ defineProps({
         default: 'Could not fetch the requested resource'
     },
 })
-const handleError = () => clearError({ redirect: "/" });
+const handleError = () => clearError({ redirect: "/dashboard" });
 </script>
 
 <template>
